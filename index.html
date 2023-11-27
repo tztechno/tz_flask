@@ -1,0 +1,28 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+</head>
+
+<body>
+    <form method="post" action="{{ url_for('process_form') }}">
+        <label for="N">Enter N:</label>
+        <input type="text" name="N" id="N" required>
+        <br>
+        <label for="A">Enter A:</label>
+        <input type="text" name="A" id="A" required>
+        <br>
+        <label for="B">Enter B:</label>
+        <textarea name="B" id="B" rows="4" cols="50" required></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
