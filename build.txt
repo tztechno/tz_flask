@@ -1,4 +1,0 @@
-python app.py
-
-submit時、returnした情報のみ表示される
-
