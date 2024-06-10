@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newly Added Guidance Documents</title>
+</head>
+
+<body>
+    <h2>Newly Added Guidance Documents</h2>
+    <form action="/scrape" method="get">
+        <button type="submit">Scrape Data</button>
+    </form>
+    {% if data is defined %}
+    <table border="1">
+        <tr>
+            {% for col in data.columns %}
+            <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data.values %}
+        <tr>
+            {% for val in row %}
+            <td>{{ val }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No data available. Click the button below to scrape.</p>
+    {% endif %}
+
+</body>
+
+</html>
