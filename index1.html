@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lucas Number Calculator</title>
+</head>
+
+<body>
+    <h1>Lucas Number Calculator</h1>
+    <p>Define your Lucas function:</p>
+    <textarea id="functionCode" rows="10" cols="50">def lucas(n):
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+    else:
+        return lucas(n-2) + lucas(n-1)</textarea>
+    <p>Enter a number to calculate:</p>
+    <input type="number" id="inputN" placeholder="Enter a number">
+    <button onclick="sendRequest()">Calculate</button>
+    <div id="result"></div>
+    <div id="time"></div>
+    <div id="error" style="color: red;"></div>
+
+    <script>
+        function sendRequest() {
+            const n = document.getElementById('inputN').value;
+            const functionCode = document.getElementById('functionCode').value;
+            fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ n, functionCode })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('error').innerText = `Error: ${data.error}`;
+                    } else {
+                        document.getElementById('result').innerText = `Lucas Number L${n} = ${data.result}`;
+                        document.getElementById('time').innerText = `Time: ${(data.process_time / 1000).toFixed(3)} sec`;
+                        document.getElementById('error').innerText = '';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('error').innerText = `Error: ${error}`;
+                });
+        }
+    </script>
+</body>
+
+</html>
