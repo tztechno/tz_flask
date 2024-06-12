@@ -1,6 +1,6 @@
 
 ---
-
+```
 def main(N):
     ans = 0
     for i in range(1, N+1):
@@ -10,9 +10,9 @@ def main(N):
 
 Result for input 1000000 = 253845
 Time: 0.358 sec
-
+```
 ---
-
+```
 def main(N):
     def to_base_n(decimal, base):
         result = ''
@@ -30,7 +30,7 @@ def main(N):
 
 Result for input 1000000 = 253845
 Time: 2.572 sec
-
+```
 ---
 ---
 ---
