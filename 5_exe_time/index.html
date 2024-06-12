@@ -8,18 +8,22 @@
 <body>
     <h1>Function Execution Time Calculator</h1>
     <p>Define your function:</p>
-    <textarea id="functionCode" rows="10" cols="50">def my_function(n):
+    <textarea id="functionCode" rows="10" cols="50">
+def main(n):
+
     if n == 0:
         return 0
     elif n == 1:
         return 1
     else:
-        return my_function(n-2) + my_function(n-1)</textarea>
+        return main(n-2) + main(n-1)
+    
+    </textarea>
     <p>Enter the function name:</p>
-    <input type="text" id="functionName" placeholder="Enter the function name">
+    <input type="text" id="functionName" placeholder="Enter a name">
     <p>Enter a number to calculate:</p>
     <input type="number" id="inputN" placeholder="Enter a number">
-    <button onclick="sendRequest()">Calculate</button>
+    <button onclick="sendRequest()">Calculate</button><br><br>
     <div id="result"></div>
     <div id="time"></div>
     <div id="error" style="color: red;"></div>
