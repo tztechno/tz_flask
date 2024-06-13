@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Function Execution Time Calculator</title>
+</head>
+
+<body>
+    <h1>Function Execution Time Calculator</h1>
+    <p>Define your function:</p>
+    <textarea id="functionCode" rows="10" cols="50">def my_function(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return my_function(n-2) + my_function(n-1)</textarea>
+    <p>Enter the function name:</p>
+    <input type="text" id="functionName" placeholder="Enter the function name">
+    <p>Enter a number to calculate:</p>
+    <input type="number" id="inputN" placeholder="Enter a number">
+    <button onclick="sendRequest()">Calculate</button>
+    <div id="result"></div>
+    <div id="time"></div>
+    <div id="error" style="color: red;"></div>
+
+    <script>
+        function sendRequest() {
+            const n = document.getElementById('inputN').value;
+            const functionCode = document.getElementById('functionCode').value;
+            const functionName = document.getElementById('functionName').value;
+            fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ n, functionCode, functionName })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('error').innerText = `Error: ${data.error}`;
+                    } else {
+                        document.getElementById('result').innerText = `Result for input ${n} = ${data.result}`;
+                        document.getElementById('time').innerText = `Time: ${(data.process_time / 1000).toFixed(3)} sec`;
+                        document.getElementById('error').innerText = '';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('error').innerText = `Error: ${error}`;
+                });
+        }
+    </script>
+</body>
+
+</html>
