@@ -1,9 +1,38 @@
 
+
+# 完成版
+## atcoderの提出コードをそのまま用いることはできないが、テキスト読み込みのコードに書き換えることで、実行時間の測定ができる
+### 本アプリでの入力スタイル
 ```
-完成版
-atcoderの提出コードをそのまま用いて、実行時間の測定ができる
+lines = input().strip().splitlines()
+N = int(lines[0])
+P = list(map(int,lines[1].split()))
+A=0
+for i in range(N):
+  flag=0
+  for j in range(i):
+    if P[i]>P[j]:
+      flag=1
+      break
+  if flag==0:
+    A+=1
+print(A)
+```
 
-
+### 提出スタイル
+```
+N = int(input())
+P = list(map(int,input().split()))
+A=0
+for i in range(N):
+  flag=0
+  for j in range(i):
+    if P[i]>P[j]:
+      flag=1
+      break
+  if flag==0:
+    A+=1
+print(A)
 ```
 ----
 
