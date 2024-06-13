@@ -1,8 +1,10 @@
 
 
 # 完成版
+
 ## atcoderの提出コードをそのまま用いることはできないが、テキスト読み込みのコードに書き換えることで、実行時間の測定ができる
-### 本アプリでの入力スタイル
+
+### 本アプリでのスタイル
 ```
 lines = input().strip().splitlines()
 N = int(lines[0])
@@ -19,7 +21,7 @@ for i in range(N):
 print(A)
 ```
 
-### 提出スタイル
+### AtCoderでのスタイル
 ```
 N = int(input())
 P = list(map(int,input().split()))
