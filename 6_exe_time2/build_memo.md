@@ -1,6 +1,22 @@
 
+# ver.9(完成版)
 
-# 完成版
+## atcoderの提出コードをそのまま用いることはできるようになった
+
+### app.pyでの変更点
+ver.8
+```
+ global_context = {'sys': sys, 'input': io.StringIO(input_data).read}
+```
+ver.9
+```
+stdin = io.StringIO(input_data)
+global_context = {'sys': sys, 'input': stdin.readline}
+```
+
+---
+
+# ver.8
 
 ## atcoderの提出コードをそのまま用いることはできないが、テキスト読み込みのコードに書き換えることで、実行時間の測定ができる
 
