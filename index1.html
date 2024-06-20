@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Query Results</title>
+</head>
+
+<body>
+    <h1>Database Query Results</h1>
+<p>sqlite-sakila.db</p>
+<p>SELECT * FROM actor;</p>
+<p>
+‘actor', 'country', 'city', 'address', 'language', 'category', 'customer', 'film', 'film_actor','film_category', 'film_text', 'inventory', 'staff', 'store', 'payment', 'rental'
+</p>
+    <form method="post" action="/">
+        <label for="query">Enter SQL Query:</label><br>
+        <textarea id="query" name="query" rows="4" cols="50">{{ query if query else '' }}</textarea><br>
+        <input type="submit" value="Execute">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    {% if rows %}
+    <table border="1">
+        <thead>
+            <tr>
+                {% for column in columns %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for item in row %}
+                <td>{{ item }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+
+</html>
