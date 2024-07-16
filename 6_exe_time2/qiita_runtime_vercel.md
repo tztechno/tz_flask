@@ -1,13 +1,22 @@
 
 
 AtCoderのコードテストページでは、言語を選んで、標準入力とソースコードをテキストBOXから入力して実行することで、標準出力と実行時間がわかります。
-今期は、Python言語において、コードテストページに相当する働きをするWebアプリをflaskで作成し、Vercelにデプロイしました。
-このアプリでは、AtCoder問題の入力例や解答に提出するソースコードをそのまま入力に使うことが出来て、出力結果、計算時間を知ることが出来ます。
+今回は、Python言語において、コードテストページに相当する働きをするWebアプリをflaskで作成し、Vercelにデプロイしました。
+このアプリでは、AtCoder問題の入力例や解答に提出するソースコードをそのまま入力に使うことが出来て、実行することで出力結果、計算時間を知ることが出来ます。
 ただし、出力結果の正誤判定はできません。計算時間は9秒間がMAXで、それを超えると'処理が9秒を超えたため強制終了しましたの'メッセージが表示されます
 
 
+## ファイル階層
+```text
+myapp/
+├── templates/
+│   └── index.html
+├── index.py
+├── requirements.txt
+└── vercel.json
+```
 
-index.py
+##　index.py
 ```
 from flask import Flask, render_template, request, jsonify
 import time
@@ -76,7 +85,7 @@ if __name__ == '__main__':
     app.run()
 ```
 
-index.html
+##　index.html
 ```
 <!DOCTYPE html>
 <html>
@@ -134,15 +143,7 @@ print(n*n)
 ```
 ```
 
-## ファイル階層
-```text
-myapp/
-├── templates/
-│   └── index.html
-├── index.py
-├── requirements.txt
-└── vercel.json
-```
+
 
 ```
 ```
