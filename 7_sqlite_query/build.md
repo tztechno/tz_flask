@@ -11,4 +11,10 @@ flask_app/
     └── style.css
 
 
+sample SQL
+
+SELECT sqlite_version();
+
+SELECT name FROM sqlite_master WHERE type='table';
+
 ```
